@@ -3,7 +3,9 @@ package com.amz.altlearner.rest;
 import com.amz.altlearner.data.repos.WordRepo;
 import com.amz.altlearner.language.english.word.Type;
 import com.amz.altlearner.rest.model.Word;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,6 +62,11 @@ public class WordController {
     }
 
     private Word toModel(com.amz.altlearner.data.entity.Word w) {
+        if (w == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "entity not found"
+            );
+        }
         return new Word(w.getWord(), w.getResources(), toTypes(w.getType()));
     }
 
