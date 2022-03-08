@@ -1,6 +1,5 @@
 package com.amz.altlearner.rest;
 
-import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amz.altlearner.data.entity.Login;
 import com.amz.altlearner.data.entity.User;
 import com.amz.altlearner.data.repos.LoginRepo;

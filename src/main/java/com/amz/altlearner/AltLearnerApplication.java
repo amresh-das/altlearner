@@ -1,5 +1,7 @@
 package com.amz.altlearner;
 
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,8 +19,16 @@ public class AltLearnerApplication {
 	}
 
 	@Bean
-	public AmazonSimpleEmailService amazonSimpleEmailService(@Value("${aws.region}")final String awsRegion) {
+	public AWSStaticCredentialsProvider awsCredentials() {
+		final BasicAWSCredentials credentials =
+				new BasicAWSCredentials("AKIA55FTWEZREDTHXFIS", "UY/5cU4I6k2Xewn+c7Ghw9/iu5x/QHsIxZ8WzrD9");
+		return new AWSStaticCredentialsProvider(credentials);
+	}
+
+	@Bean
+	public AmazonSimpleEmailService amazonSimpleEmailService(@Value("${aws.region}")final String awsRegion, final AWSStaticCredentialsProvider awsCredentials) {
 		return AmazonSimpleEmailServiceClientBuilder.standard()
+				.withCredentials(awsCredentials)
 				.withRegion(awsRegion).build();
 	}
 
