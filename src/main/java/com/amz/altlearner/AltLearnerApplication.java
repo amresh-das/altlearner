@@ -21,7 +21,7 @@ public class AltLearnerApplication {
 	@Bean
 	public AWSStaticCredentialsProvider awsCredentials() {
 		final BasicAWSCredentials credentials =
-				new BasicAWSCredentials("AKIA55FTWEZREDTHXFIS", "UY/5cU4I6k2Xewn+c7Ghw9/iu5x/QHsIxZ8WzrD9");
+				new BasicAWSCredentials("", "");
 		return new AWSStaticCredentialsProvider(credentials);
 	}
 
