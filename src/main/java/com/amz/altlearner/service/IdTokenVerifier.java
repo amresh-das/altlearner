@@ -12,7 +12,7 @@ import java.util.Collections;
 @Service
 public class IdTokenVerifier {
     private static final Logger LOGGER = LoggerFactory.getLogger(IdTokenVerifier.class);
-    private static final String GOOGLE_CLIENT_ID = "28523494863-6fpqh3i0171mrm3105ga6po9errrmrqb.apps.googleusercontent.com";
+    private static final String GOOGLE_CLIENT_ID = "";
 
     public boolean verify(final String provider, final String token, final String email) {
         try {
